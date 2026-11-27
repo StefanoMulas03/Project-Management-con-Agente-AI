@@ -5,6 +5,9 @@ description = "API backend per una piattaforma di project management integrata c
 requires-python = ">=3.12"
 dependencies = [
     "fastapi[standard]>=0.165.0",
+    "psycopg[binary]>=3.3.9",
+    "pydantic-settings>=2.16.3",
+    "sqlalchemy>=2.1.9",
 ]
 
 [build-system]

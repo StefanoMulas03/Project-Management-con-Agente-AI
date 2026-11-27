@@ -1,12 +1,26 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from sqlalchemy.orm import Session
+from sqlalchemy import text
+
+from backend.core.config import settings
+from backend.core.dependencies import get_db
+
 
 app = FastAPI(
-    title="Project Management con Agente AI",
-    description="API per la gestione di organizzazioni, progetti, attività e documenti, integrate con un agente AI.",
-    version="0.1.0"
+    title=settings.app_name,
+    description=settings.app_description,
+    version=settings.app_version
 )
 
 
 @app.get("/")
 def root():
     return {"message": "Project Management API"}
+
+
+    
+@app.get("/db-test")
+def db_test(db: Session = Depends(get_db)):
+    result = db.execute(text("SELECT 1"))
+
+    return {"database": result.scalar_one()}
