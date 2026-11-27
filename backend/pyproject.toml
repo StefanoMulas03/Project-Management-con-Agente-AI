@@ -4,6 +4,8 @@ version = "0.1.0"
 description = "API backend per una piattaforma di project management integrata con un agente AI"
 requires-python = ">=3.12"
 dependencies = [
+    "alembic>=1.20.1",
+    "email-validator>=2.4.0",
     "fastapi[standard]>=0.165.0",
     "psycopg[binary]>=3.3.9",
     "pydantic-settings>=2.16.3",
